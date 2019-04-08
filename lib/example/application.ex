@@ -3,7 +3,11 @@ defmodule Example.Application do
 
   def start(_type, _args) do
     import Supervisor.Spec
-
+    topologies =  [
+      example: [
+        strategy: Cluster.Strategy.Epmd,
+        config: [hosts: []]
+      ]
     children = [
       supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
       supervisor(Example.Database, []),

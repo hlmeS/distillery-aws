@@ -4,8 +4,8 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 
-STACK_NAME="${STACK_NAME:-distillery-aws-example}"
-APP_NAME="${APP_NAME:-distillery-aws-example}"
+STACK_NAME="${STACK_NAME:-distillery-aws}"
+APP_NAME="${APP_NAME:-distillery-aws}"
 GITHUB_TOKEN="$GITHUB_TOKEN"
 
 GIT_URL="$(grep 'url' .git/config | awk '{ print $3 }')"
@@ -141,7 +141,7 @@ function destroy_resources(){
         fi
     done
     # Delete infra stack
-    delete_stack "${STACK_NAME}-production"
+    #delete_stack "${STACK_NAME}-production"
     # Delete pipeline stack
     delete_stack "${STACK_NAME}"
     # Delete log groups
