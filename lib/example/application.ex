@@ -8,6 +8,7 @@ defmodule Example.Application do
         strategy: Cluster.Strategy.Epmd,
         config: [hosts: []]
       ]
+    ]
     children = [
       supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
       supervisor(Example.Database, []),
